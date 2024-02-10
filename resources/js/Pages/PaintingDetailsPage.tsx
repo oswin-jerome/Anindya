@@ -53,7 +53,7 @@ const PaintingDetailsPage = () => {
                                                     }
                                                     alt=""
                                                 />
-                                                <div className="description text-center mt-2">
+                                                <div className="description text-center mt-2 text-sm">
                                                     Lorem ipsum dolor sit amet
                                                     consectetur adipisicing
                                                     elit. Similique, vitae?
