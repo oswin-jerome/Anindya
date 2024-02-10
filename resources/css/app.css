@@ -6,7 +6,11 @@
 @tailwind utilities;
 
 
+
 @layer components{
+    .input{
+        @apply p-3 border-none text-app-primary  rounded-sm outline-none shadow-none focus:ring-app-primary;
+    }
     .heading-1{
         font-family: "Montserrat", sans-serif;
         @apply  text-4xl font-bold text-app-primary;
