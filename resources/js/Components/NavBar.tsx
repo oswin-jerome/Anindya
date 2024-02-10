@@ -19,7 +19,7 @@ const NavBar = () => {
         },
         {
             label: "Contact",
-            url: route("landing"),
+            url: route("contact"),
             isCurrent: route().current("contact"),
         },
         {

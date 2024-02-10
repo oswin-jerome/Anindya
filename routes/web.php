@@ -26,6 +26,10 @@ Route::get('/paintings', function () {
     return Inertia::render('PaintingsPage');
 })->name("paintings");
 
+Route::get('/contact', function () {
+    return Inertia::render('ContactPage');
+})->name("contact");
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
