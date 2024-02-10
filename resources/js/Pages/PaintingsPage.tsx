@@ -8,6 +8,8 @@ export default function PaintingsPage() {
 
     return (
         <>
+            <Head title="Paintings" />
+
             <SiteLayout>
                 <div className="mt-24 container mx-auto px-4 py-16">
                     <h3 className="text-center mb-4 heading-1">My Paintings</h3>

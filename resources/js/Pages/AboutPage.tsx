@@ -6,13 +6,15 @@ import SiteLayout from "@/Layouts/SiteLayout";
 export default function AboutPage() {
     return (
         <>
+            <Head title="About" />
+
             <SiteLayout>
                 <section className=" h-[50vh] md:h-[100vh] relative">
-                    <div className="bg-black/50 absolute inset-0 grid place-items-center p-3">
+                    {/* <div className="bg-black/50 absolute inset-0 grid place-items-center p-3">
                         <h1 className="font-bold text-5xl md:text-6xl xl:text-8xl text-white text-center">
                             Anindya Mukherjee
                         </h1>
-                    </div>
+                    </div> */}
                     {/* <img
                         src="/images/hero.jpg"
                         className="object-cover h-full w-full"

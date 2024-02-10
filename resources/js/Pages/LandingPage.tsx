@@ -6,8 +6,9 @@ import SiteLayout from "@/Layouts/SiteLayout";
 export default function LandingPage() {
     return (
         <>
+            <Head title="Home" />
             <SiteLayout>
-                <section className=" h-[50vh] md:h-[100vh] relative">
+                <section className=" h-[50vh] md:h-[100vh] relative mt-16 md:mt-auto">
                     <div className="bg-black/50 absolute inset-0 grid place-items-center p-3">
                         <h1 className="font-bold text-5xl md:text-6xl xl:text-8xl text-white text-center">
                             Anindya Mukherjee
@@ -47,9 +48,12 @@ export default function LandingPage() {
                                 tincidunt. Leo tincidunt quis arcu amet lectus
                             </p>
                             <div className="flex justify-center">
-                                <button className="bg-transparent border border-app-primary z-10 relative text-app-primary mt-16 px-8 py-3  active:scale-95 rounded-full">
+                                <Link
+                                    href={route("about")}
+                                    className="bg-transparent border border-app-primary z-10 relative text-app-primary mt-16 px-8 py-3  active:scale-95 rounded-full"
+                                >
                                     Know More
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ import NavBar from "@/Components/NavBar";
 const SiteLayout = ({ children }: PropsWithChildren) => {
     return (
         <div className="bg-app-bg">
-            <div className="fixed top-0 left-0 right-0 z-50 bg-app-bg shadow-lg">
+            <div className="fixed top-0 left-0 right-0 z-50 bg-app-bg shadow">
                 <NavBar />
             </div>
             <div>{children}</div>
