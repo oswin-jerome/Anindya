@@ -23,7 +23,11 @@ export default function PaintingsPage() {
                     <section className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-6 md:gap-8 ">
                         {paintings.map((painting, i) => {
                             return (
-                                <div className="cursor-pointer" key={i}>
+                                <Link
+                                    href={route("painting.details", i)}
+                                    className="cursor-pointer"
+                                    key={i}
+                                >
                                     <img
                                         src={
                                             "https://picsum.photos/500/500?id=" +
@@ -39,7 +43,7 @@ export default function PaintingsPage() {
                                     <p className="mt-2 text-center description">
                                         Rs. 500
                                     </p>
-                                </div>
+                                </Link>
                             );
                         })}
                     </section>

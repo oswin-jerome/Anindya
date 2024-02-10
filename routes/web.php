@@ -25,6 +25,9 @@ Route::get('/about', function () {
 Route::get('/paintings', function () {
     return Inertia::render('PaintingsPage');
 })->name("paintings");
+Route::get('/paintings/{id}', function () {
+    return Inertia::render('PaintingDetailsPage');
+})->name("painting.details");
 
 Route::get('/contact', function () {
     return Inertia::render('ContactPage');
