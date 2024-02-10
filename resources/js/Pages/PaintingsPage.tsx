@@ -18,7 +18,7 @@ export default function PaintingsPage() {
                         luctus eu. Metus sit risus tincidunt malesuada ornare.
                     </p>
 
-                    <section className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 md:gap-5 ">
+                    <section className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-6 md:gap-8 ">
                         {paintings.map((painting, i) => {
                             return (
                                 <div className="cursor-pointer" key={i}>
