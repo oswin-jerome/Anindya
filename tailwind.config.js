@@ -3,6 +3,9 @@ import forms from "@tailwindcss/forms";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    corePlugins: {
+        container: false,
+    },
     content: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./storage/framework/views/*.php",
@@ -29,5 +32,27 @@ export default {
         },
     },
 
-    plugins: [forms, require("@tailwindcss/typography")],
+    plugins: [
+        forms,
+        require("@tailwindcss/typography"),
+        function ({ addComponents }) {
+            addComponents({
+                ".container": {
+                    maxWidth: "98vw",
+                    "@screen sm": {
+                        maxWidth: "95vw",
+                    },
+                    "@screen md": {
+                        maxWidth: "90vw",
+                    },
+                    "@screen lg": {
+                        maxWidth: "90vw",
+                    },
+                    "@screen xl": {
+                        maxWidth: "90vw",
+                    },
+                },
+            });
+        },
+    ],
 };

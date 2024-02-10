@@ -26,7 +26,7 @@ export default function LandingPage() {
                         About
                     </h3>
                     <div className="">
-                        <div className="flex-1 text-slate-600 leading-loose text-center xl:max-w-[70vw] mx-auto font-content">
+                        <div className="flex-1 text-slate-600 leading-loose text-justify mx-auto font-content">
                             <p>
                                 Lorem ipsum dolor sit amet consectetur. Arcu
                                 cursus congue viverra nunc non aliquam non magna
