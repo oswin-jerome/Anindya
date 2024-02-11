@@ -22,6 +22,9 @@ const PaintingAutoGrid = ({ paintings }: { paintings: Painting[] }) => {
         oa.forEach((e) => {
             res[i].push(e);
             i = i + 1;
+            if (i > 4) {
+                i = 1;
+            }
         });
 
         return res;
