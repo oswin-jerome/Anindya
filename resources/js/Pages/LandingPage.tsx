@@ -34,9 +34,9 @@ export default function LandingPage({ paintings }: { paintings: Painting[] }) {
                             alt=""
                         />
                     </Carousel>
-                    <div className="bg-black/50 absolute inset-0 grid place-items-center p-3">
-                        <h1 className="font-bold text-3xl md:text-[4em] xl:text-[5em] text-white text-center name">
-                            Anindya Mukherjee
+                    <div className="bg-black/5 0 absolute inset-0 grid place-items-center p-3">
+                        <h1 className="text-3xl md:text-[4em] xl:text-[5em] text-white/90 text-center name capitalize tracking-widest">
+                            ANINDYA MUKHERJEE
                         </h1>
                     </div>
                 </section>
