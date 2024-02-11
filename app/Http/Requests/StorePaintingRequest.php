@@ -28,7 +28,8 @@ class StorePaintingRequest extends FormRequest
             "price" => "numeric",
             "short_description" => "string|required",
             "title" => "string|required",
-            "painting" => "image|required"
+            "painting" => "image|required",
+            "painting_id" => "nullable|integer|exists:paintings,id"
         ];
     }
 }

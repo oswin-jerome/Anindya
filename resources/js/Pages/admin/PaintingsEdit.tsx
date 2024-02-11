@@ -9,8 +9,10 @@ import "react-quill/dist/quill.snow.css";
 export default function PaintingsEdit({
     auth,
     painting,
+    paintings,
 }: PageProps & {
     painting: Painting;
+    paintings: Painting[];
 }) {
     const { data, setData, post, patch, reset, isDirty } = useForm<{
         title: string;
@@ -20,6 +22,7 @@ export default function PaintingsEdit({
         post: string;
         painting: File | undefined;
         _method: "put";
+        painting_id: string;
     }>({
         description: painting.description,
         post: painting.post,
@@ -28,6 +31,7 @@ export default function PaintingsEdit({
         title: painting.title,
         painting: undefined,
         _method: "put",
+        painting_id: painting.painting_id,
     });
 
     const handle = (e: FormEvent) => {
@@ -80,6 +84,29 @@ export default function PaintingsEdit({
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handle} className="grid gap-4">
+                                <div className="input-box">
+                                    <label htmlFor="">Parent Painting</label>
+                                    <select
+                                        value={data.painting_id}
+                                        onChange={(e) =>
+                                            setData(
+                                                "painting_id",
+                                                e.target.value
+                                            )
+                                        }
+                                        name=""
+                                        id=""
+                                    >
+                                        <option value="">None</option>
+                                        {paintings.map((paint) => {
+                                            return (
+                                                <option value={paint.id}>
+                                                    <span> {paint.title} </span>
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                </div>
                                 <div className="input-box">
                                     <label htmlFor="">Painting</label>
                                     <input

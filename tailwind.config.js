@@ -14,18 +14,22 @@ export default {
     ],
 
     theme: {
+        fontSize: {
+            sm: "0.8rem",
+            base: "16px",
+            xl: "1.25rem",
+            "2xl": "1.563rem",
+            "3xl": "1.953rem",
+            "4xl": "2.441rem",
+            "5xl": "3.052rem",
+        },
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-                content: [
-                    "Montserrat Alternates",
-                    ...defaultTheme.fontFamily.serif,
-                ],
-                heading: ["Montserrat", ...defaultTheme.fontFamily.serif],
             },
             colors: {
                 app: {
-                    primary: "#AF7141",
+                    primary: "#623412",
                     bg: "#F3F3F3",
                 },
             },

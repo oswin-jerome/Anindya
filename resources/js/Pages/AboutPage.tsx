@@ -73,7 +73,7 @@ export default function AboutPage() {
                             Story Behind
                         </h3>
                         <div className="">
-                            <div className="flex-1 text-slate-600 leading-loose text-justify  mx-auto font-content">
+                            <div className="flex-1 text-slate-600 leading-loose text-justify font-content max-w-[75ch] mx-auto">
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur. Arcu
                                     cursus congue viverra nunc non aliquam non

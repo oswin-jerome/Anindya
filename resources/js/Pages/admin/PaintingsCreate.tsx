@@ -1,26 +1,37 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from "@inertiajs/react";
-import { PageProps } from "@/types";
+import { PageProps, Painting } from "@/types";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { FormEvent } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-export default function PaintingsCreate({ auth }: PageProps) {
+export default function PaintingsCreate({
+    auth,
+    paintings,
+}: PageProps & {
+    paintings: Painting[];
+}) {
     const { data, setData, post, reset } = useForm<{
         title: string;
         description: string;
         short_description: string;
         price: number;
         post: string;
+        medium: string;
+        size: string;
         painting: File | undefined;
+        painting_id: string;
     }>({
         description: "",
         post: "",
         price: 0,
         short_description: "",
         title: "",
+        medium: "",
+        size: "",
         painting: undefined,
+        painting_id: "",
     });
 
     const handle = (e: FormEvent) => {
@@ -53,6 +64,30 @@ export default function PaintingsCreate({ auth }: PageProps) {
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handle} className="grid gap-4">
                                 <div className="input-box">
+                                    <label htmlFor="">Parent Painting</label>
+                                    <select
+                                        value={data.painting_id}
+                                        onChange={(e) =>
+                                            setData(
+                                                "painting_id",
+                                                e.target.value
+                                            )
+                                        }
+                                        name=""
+                                        id=""
+                                    >
+                                        <option value="">None</option>
+                                        {paintings.map((paint) => {
+                                            return (
+                                                <option value={paint.id}>
+                                                    <span> {paint.title} </span>
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                </div>
+
+                                <div className="input-box">
                                     <label htmlFor="">Painting</label>
                                     <input
                                         onChange={(e) =>
@@ -71,6 +106,34 @@ export default function PaintingsCreate({ auth }: PageProps) {
                                         value={data.title}
                                         onChange={(e) =>
                                             setData("title", e.target.value)
+                                        }
+                                        type="text"
+                                    />
+                                </div>
+                                <div className="input-box">
+                                    <label htmlFor="">Medium</label>
+
+                                    <select
+                                        value={data.medium}
+                                        onChange={(e) =>
+                                            setData("medium", e.target.value)
+                                        }
+                                        name=""
+                                        id=""
+                                    >
+                                        <option value="Charcoal">
+                                            Charcoal
+                                        </option>
+                                        <option value="Paint">Paint</option>
+                                        <option value="Pen">Pen</option>
+                                    </select>
+                                </div>
+                                <div className="input-box">
+                                    <label htmlFor="">Size</label>
+                                    <input
+                                        value={data.size}
+                                        onChange={(e) =>
+                                            setData("size", e.target.value)
                                         }
                                         type="text"
                                     />

@@ -13,7 +13,7 @@ export default function PaintingsPage({
             <Head title="Paintings" />
 
             <SiteLayout>
-                <div className="mt-24 container mx-auto px-4 py-16">
+                <div className="mt-24 container max-w-[80ch] mx-auto px-4 py-16">
                     <h3 className="text-center mb-4 heading-1">My Paintings</h3>
                     <p className="mx-auto text-center max-w-[500px] description">
                         Lorem ipsum dolor sit amet consectetur. Eget blandit
@@ -22,7 +22,7 @@ export default function PaintingsPage({
                         luctus eu. Metus sit risus tincidunt malesuada ornare.
                     </p>
 
-                    <section className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-6 md:gap-8 ">
+                    <section className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 md:gap-8 ">
                         {paintings.map((painting, i) => {
                             return (
                                 <Link

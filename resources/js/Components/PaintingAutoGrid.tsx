@@ -42,7 +42,7 @@ const PaintingAutoGrid = ({ paintings }: { paintings: Painting[] }) => {
                 tincidunt malesuada ornare.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-12 lg:mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-12 lg:mt-20 max-w-[80ch] mx-auto">
                 {[1, 2, 3, 4].map((k) => {
                     return (
                         <div key={k} className="flex flex-col gap-4">
@@ -61,18 +61,26 @@ const PaintingAutoGrid = ({ paintings }: { paintings: Painting[] }) => {
                                             alt=" "
                                             className="rounded w-full  object-cover hover:shadow-xl hover:scale-[1.03] transition-all"
                                         />
-                                        <p className="text-center mt-2 w-[80%] description mx-auto">
+                                        {/* <p className="text-center mt-2 w-[80%] description mx-auto">
                                             {painting.title}
                                         </p>
                                         <p className="mt-2 mb-1 text-center description">
                                             Rs. {painting.price}
-                                        </p>
+                                        </p> */}
                                     </Link>
                                 );
                             })}
                         </div>
                     );
                 })}
+            </div>
+            <div className="flex justify-center">
+                <Link
+                    href={route("paintings.page")}
+                    className="bg-transparent border border-app-primary z-10 relative text-app-primary mt-16 px-8 py-3  active:scale-95 rounded-full"
+                >
+                    View More
+                </Link>
             </div>
         </section>
     );

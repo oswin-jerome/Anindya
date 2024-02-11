@@ -41,7 +41,8 @@ Route::get('/paintings', function () {
 Route::get('/paintings/{painting}', function (Painting $painting) {
 
     return Inertia::render('PaintingDetailsPage', [
-        "painting" => new PaintingResource($painting)
+        "painting" => new PaintingResource($painting),
+        "child_paintings" => PaintingResource::collection($painting->childPaintings)->collection
     ]);
 })->name("paintings.details");
 

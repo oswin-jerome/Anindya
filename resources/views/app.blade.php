@@ -42,7 +42,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased bg-app-bg">
+<body class=" antialiased bg-app-bg text-base">
     @inertia
 </body>
 

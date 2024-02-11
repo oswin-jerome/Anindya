@@ -28,7 +28,10 @@ class PaintingController extends Controller
      */
     public function create()
     {
-        return Inertia::render("admin/PaintingsCreate");
+        $paintings = Painting::all(["id", "title"]);
+        return Inertia::render("admin/PaintingsCreate", [
+            "paintings" => $paintings
+        ]);
     }
 
     /**
@@ -58,8 +61,10 @@ class PaintingController extends Controller
      */
     public function edit(Painting $painting)
     {
+        $paintings = Painting::all(["id", "title"]);
         return Inertia::render("admin/PaintingsEdit", [
-            "painting" => $painting
+            "painting" => $painting,
+            "paintings" => $paintings
         ]);
     }
 
@@ -84,6 +89,8 @@ class PaintingController extends Controller
      */
     public function destroy(Painting $painting)
     {
-        //
+        $painting->delete();
+
+        return back();
     }
 }

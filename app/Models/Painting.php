@@ -17,4 +17,9 @@ class Painting extends Model implements HasMedia
     {
         $this->addMediaCollection('painting')->singleFile();
     }
+
+    public function childPaintings()
+    {
+        return $this->hasMany(Painting::class, "painting_id");
+    }
 }
