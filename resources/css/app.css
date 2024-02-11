@@ -31,6 +31,14 @@
     outline: none !important;
   }
 
+
+.selected{
+    scale: 1.0 !important;
+  }
+   .slide {
+       scale: 1.2;
+   }
+
 @layer components{
     .input-box {
             @apply flex flex-col gap-1;
