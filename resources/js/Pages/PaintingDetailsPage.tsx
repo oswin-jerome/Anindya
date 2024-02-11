@@ -41,20 +41,20 @@ const PaintingDetailsPage = ({
                                     {painting.title}
                                 </h1>
                                 <div className="w-full md:w-1 bg-app-primary h-1 md:h-full"></div>
-                                <p className="description">
+                                <div className="description">
                                     <p>Medium: {painting.medium}</p>
                                     <p>Size: {painting.size}</p>
                                     <p>Price: Rs. {painting.price}</p>
-                                </p>
+                                </div>
                             </div>
                             <div className="mt-6">
-                                <p className="description leading-loose text-justify prose max-w-full">
+                                <div className="description leading-loose text-justify prose max-w-full">
                                     <div
                                         dangerouslySetInnerHTML={{
                                             __html: painting.description,
                                         }}
                                     ></div>
-                                </p>
+                                </div>
 
                                 {child_paintings.length > 0 && (
                                     <h4 className="text-xl font-bold">
@@ -166,7 +166,25 @@ function PaintItem({ paint }: { paint: Painting }) {
                 shouldCloseOnOverlayClick={true}
                 overlayClassName="Overlay"
             >
-                <div className="max-h-[90vh] lg:max-w-[70vw] overflow-scroll">
+                <div className="max-h-[90vh] max-w-[90vw] lg:max-w-[70vw] overflow-scroll">
+                    <div className="flex justify-end pb-2">
+                        <button onClick={() => setIsOpen(false)}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 18 18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                     <div className="grid lg:grid-cols-2 gap-8">
                         <img src={paint.painting} alt="" />
                         <div>
@@ -175,11 +193,11 @@ function PaintItem({ paint }: { paint: Painting }) {
                                     {paint.title}
                                 </h1>
                                 <div className="w-full md:w-1 bg-app-primary h-1 md:h-full"></div>
-                                <p className="description">
+                                <div className="description">
                                     <p>Medium: {paint.medium}</p>
                                     <p>Size: {paint.size}</p>
                                     <p>Price: Rs. {paint.price}</p>
-                                </p>
+                                </div>
                             </div>
                             <p className="description mt-6">
                                 <div
