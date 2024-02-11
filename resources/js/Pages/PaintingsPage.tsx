@@ -1,11 +1,13 @@
 import { Link, Head } from "@inertiajs/react";
-import { PageProps } from "@/types";
+import { PageProps, Painting } from "@/types";
 import Guest from "@/Layouts/GuestLayout";
 import SiteLayout from "@/Layouts/SiteLayout";
 
-export default function PaintingsPage() {
-    const paintings = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-
+export default function PaintingsPage({
+    paintings,
+}: {
+    paintings: Painting[];
+}) {
     return (
         <>
             <Head title="Paintings" />
@@ -24,24 +26,23 @@ export default function PaintingsPage() {
                         {paintings.map((painting, i) => {
                             return (
                                 <Link
-                                    href={route("painting.details", i)}
+                                    href={route(
+                                        "paintings.details",
+                                        painting.id
+                                    )}
                                     className="cursor-pointer"
                                     key={i}
                                 >
                                     <img
-                                        src={
-                                            "https://picsum.photos/500/500?id=" +
-                                            i
-                                        }
+                                        src={painting.painting}
                                         alt=" "
                                         className="rounded w-full aspect-[3/4] object-cover hover:shadow-xl hover:scale-[1.03] transition-all"
                                     />
                                     <p className="text-center mt-2 w-[80%] description mx-auto">
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Facilisis lorem tristique viverra sed.
+                                        {painting.title}
                                     </p>
                                     <p className="mt-2 text-center description">
-                                        Rs. 500
+                                        Rs. {painting.price}
                                     </p>
                                 </Link>
                             );

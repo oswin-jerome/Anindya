@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePaintingRequest;
 use App\Http\Requests\UpdatePaintingRequest;
+use App\Http\Resources\PaintingResource;
 use App\Models\Painting;
+use Inertia\Inertia;
 
 class PaintingController extends Controller
 {
@@ -13,7 +15,12 @@ class PaintingController extends Controller
      */
     public function index()
     {
-        //
+
+        $paintings = Painting::all();
+        // return response(PaintingResource::collection($paintings)->collection);
+        return Inertia::render("admin/PaintingsList", [
+            "paintings" => PaintingResource::collection($paintings)->collection
+        ]);
     }
 
     /**
@@ -21,7 +28,7 @@ class PaintingController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("admin/PaintingsCreate");
     }
 
     /**
@@ -29,7 +36,13 @@ class PaintingController extends Controller
      */
     public function store(StorePaintingRequest $request)
     {
-        //
+        $data =  $request->validated();
+
+        $painting = Painting::create($request->except(["painting"]));
+        $painting->addMedia($request->file("painting"))->toMediaCollection("painting");
+
+
+        return back();
     }
 
     /**
@@ -45,7 +58,9 @@ class PaintingController extends Controller
      */
     public function edit(Painting $painting)
     {
-        //
+        return Inertia::render("admin/PaintingsEdit", [
+            "painting" => $painting
+        ]);
     }
 
     /**
@@ -53,7 +68,15 @@ class PaintingController extends Controller
      */
     public function update(UpdatePaintingRequest $request, Painting $painting)
     {
-        //
+        $data = $request->except(["painting"]);
+        $painting->update($data);
+
+        if ($request->has("painting")) {
+            $painting->addMedia($request->file("painting"))->toMediaCollection("painting");
+        }
+
+
+        return back();
     }
 
     /**

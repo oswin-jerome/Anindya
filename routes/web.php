@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\PaintingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Resources\PaintingResource;
+use App\Models\Painting;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,17 +20,30 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('LandingPage');
+    $paintings = Painting::where("active", "=", true)->get();
+
+    return Inertia::render('LandingPage', [
+        "paintings" => PaintingResource::collection($paintings)->collection
+    ]);
 })->name("landing");
 Route::get('/about', function () {
     return Inertia::render('AboutPage');
 })->name("about");
 Route::get('/paintings', function () {
-    return Inertia::render('PaintingsPage');
-})->name("paintings");
-Route::get('/paintings/{id}', function () {
-    return Inertia::render('PaintingDetailsPage');
-})->name("painting.details");
+    $paintings = Painting::where("active", "=", true)->get();
+
+
+    return Inertia::render('PaintingsPage', [
+        "paintings" => PaintingResource::collection($paintings)->collection
+
+    ]);
+})->name("paintings.page");
+Route::get('/paintings/{painting}', function (Painting $painting) {
+
+    return Inertia::render('PaintingDetailsPage', [
+        "painting" => new PaintingResource($painting)
+    ]);
+})->name("paintings.details");
 
 Route::get('/contact', function () {
     return Inertia::render('ContactPage');
@@ -41,6 +57,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::prefix("admin")->group(function () {
+        Route::resource("paintings", PaintingController::class);
+    });
 });
 
 require __DIR__ . '/auth.php';

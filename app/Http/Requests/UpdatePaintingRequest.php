@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdatePaintingRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdatePaintingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,12 @@ class UpdatePaintingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "description" => "string",
+            "post" => "string",
+            "price" => "numeric",
+            "short_description" => "string",
+            "title" => "string",
+            "painting" => "image"
         ];
     }
 }

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->longText("description");
             $table->longText("short_description");
             $table->longText("post");
+            $table->double("price")->default(0.0);
+            $table->boolean("active")->default(true);
             $table->timestamps();
         });
     }

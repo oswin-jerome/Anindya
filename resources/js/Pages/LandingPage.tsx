@@ -1,9 +1,10 @@
 import { Link, Head } from "@inertiajs/react";
-import { PageProps } from "@/types";
+import { PageProps, Painting } from "@/types";
 import Guest from "@/Layouts/GuestLayout";
 import SiteLayout from "@/Layouts/SiteLayout";
+import PaintingAutoGrid from "@/Components/PaintingAutoGrid";
 
-export default function LandingPage() {
+export default function LandingPage({ paintings }: { paintings: Painting[] }) {
     return (
         <>
             <Head title="Home" />
@@ -58,6 +59,9 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </section>
+                <div className="bg-white">
+                    <PaintingAutoGrid paintings={paintings} />
+                </div>
             </SiteLayout>
         </>
     );

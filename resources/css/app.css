@@ -8,6 +8,21 @@
 
 
 @layer components{
+    .input-box {
+            @apply flex flex-col gap-1;
+        }
+    
+        .input-box input,
+        .input-box textarea,
+        .input-box select {
+            @apply rounded border-slate-400;
+        }
+    
+        .input-box select:disabled,
+        .input-box input:disabled {
+            @apply opacity-40 cursor-not-allowed;
+        }
+
     .input{
         @apply p-3 border-none text-app-primary  rounded-sm outline-none shadow-none focus:ring-app-primary;
     }

@@ -23,6 +23,7 @@ export default function AboutPage() {
                     <video
                         autoPlay
                         muted
+                        playsInline
                         controls
                         className="object-cover h-full w-full"
                         src="/videos/intro.mp4"

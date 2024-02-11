@@ -1,0 +1,78 @@
+import { Painting } from "@/types";
+import { Link } from "@inertiajs/react";
+
+type PaintArray = {
+    [key: number]: Painting[];
+};
+
+const PaintingAutoGrid = ({ paintings }: { paintings: Painting[] }) => {
+    const a1 = [500, 300, 700, 200];
+    const a2 = [300, 700, 200, 200];
+
+    const splitList = (oa: Painting[]) => {
+        let res: PaintArray = {
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+        };
+
+        let i = 1;
+
+        oa.forEach((e) => {
+            res[i].push(e);
+            i = i + 1;
+        });
+
+        return res;
+    };
+
+    const paintGrid = splitList(paintings);
+
+    return (
+        <section className="container mx-auto px-4 py-16">
+            <h3 className="text-center  mb-4 heading-1">My Paintings</h3>
+            <p className="mx-auto text-center max-w-[500px] description">
+                Lorem ipsum dolor sit amet consectetur. Eget blandit gravida
+                purus pharetra. Dis praesent volutpat interdum egestas facilisis
+                est cras volutpat nisi. In eu lectus luctus eu. Metus sit risus
+                tincidunt malesuada ornare.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-12 lg:mt-20">
+                {[1, 2, 3, 4].map((k) => {
+                    return (
+                        <div key={k} className="flex flex-col gap-4">
+                            {paintGrid[k].map((painting, i) => {
+                                return (
+                                    <Link
+                                        href={route(
+                                            "paintings.details",
+                                            painting.id
+                                        )}
+                                        className="cursor-pointer shadow"
+                                        key={i}
+                                    >
+                                        <img
+                                            src={painting.painting}
+                                            alt=" "
+                                            className="rounded w-full  object-cover hover:shadow-xl hover:scale-[1.03] transition-all"
+                                        />
+                                        <p className="text-center mt-2 w-[80%] description mx-auto">
+                                            {painting.title}
+                                        </p>
+                                        <p className="mt-2 mb-1 text-center description">
+                                            Rs. {painting.price}
+                                        </p>
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    );
+                })}
+            </div>
+        </section>
+    );
+};
+
+export default PaintingAutoGrid;

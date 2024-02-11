@@ -14,8 +14,8 @@ const NavBar = () => {
         },
         {
             label: "Paintings",
-            url: route("paintings"),
-            isCurrent: route().current("paintings"),
+            url: route("paintings.page"),
+            isCurrent: route().current("paintings.*"),
         },
         {
             label: "Contact",
