@@ -9,8 +9,8 @@
 @tailwind utilities;
 
 
-*{
-font-family: 'Futura PT', sans-serif;
+.site-font{
+    font-family: 'Futura PT', sans-serif;
 }
 
 .name{

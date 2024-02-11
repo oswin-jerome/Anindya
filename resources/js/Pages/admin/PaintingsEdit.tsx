@@ -23,6 +23,8 @@ export default function PaintingsEdit({
         painting: File | undefined;
         _method: "put";
         painting_id: string;
+        medium: string;
+        size: string;
     }>({
         description: painting.description,
         post: painting.post,
@@ -32,6 +34,8 @@ export default function PaintingsEdit({
         painting: undefined,
         _method: "put",
         painting_id: painting.painting_id,
+        medium: painting.medium,
+        size: painting.size,
     });
 
     const handle = (e: FormEvent) => {
@@ -117,6 +121,34 @@ export default function PaintingsEdit({
                                             )
                                         }
                                         type="file"
+                                    />
+                                </div>
+                                <div className="input-box">
+                                    <label htmlFor="">Medium</label>
+
+                                    <select
+                                        value={data.medium}
+                                        onChange={(e) =>
+                                            setData("medium", e.target.value)
+                                        }
+                                        name=""
+                                        id=""
+                                    >
+                                        <option value="Charcoal">
+                                            Charcoal
+                                        </option>
+                                        <option value="Paint">Paint</option>
+                                        <option value="Pen">Pen</option>
+                                    </select>
+                                </div>
+                                <div className="input-box">
+                                    <label htmlFor="">Size</label>
+                                    <input
+                                        value={data.size}
+                                        onChange={(e) =>
+                                            setData("size", e.target.value)
+                                        }
+                                        type="text"
                                     />
                                 </div>
                                 <div className="input-box">

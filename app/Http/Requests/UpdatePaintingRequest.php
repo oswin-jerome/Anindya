@@ -28,7 +28,9 @@ class UpdatePaintingRequest extends FormRequest
             "price" => "numeric",
             "short_description" => "string",
             "title" => "string",
-            "painting" => "image"
+            "painting" => "image",
+            "medium" => "string",
+            "size" => "string",
         ];
     }
 }
