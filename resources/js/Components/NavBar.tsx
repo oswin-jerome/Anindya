@@ -32,9 +32,8 @@ const NavBar = () => {
     return (
         <nav className="container mx-auto px-4 py-6 ">
             <div className="flex justify-between items-center">
-                <h3 className="text-app-primary heading-1 text-xl font-semibold">
-                    Artist
-                </h3>
+                <img src="/assets/logo.png" alt="" className="h-10 absolute" />
+                <div></div>
                 <button
                     onClick={() => {
                         setIsOpen(!isOpen);

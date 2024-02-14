@@ -3,8 +3,16 @@ import { PageProps } from "@/types";
 import Guest from "@/Layouts/GuestLayout";
 import SiteLayout from "@/Layouts/SiteLayout";
 import { IoLogoWhatsapp, IoMailOutline } from "react-icons/io5";
+import { useState } from "react";
 
 export default function ContactPage() {
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+
     return (
         <>
             <Head title="Contact" />
@@ -24,6 +32,13 @@ export default function ContactPage() {
                             <div className="flex flex-1 flex-col gap-2">
                                 <label htmlFor="name">Name</label>
                                 <input
+                                    value={data.name}
+                                    onChange={(e) =>
+                                        setData({
+                                            ...data,
+                                            name: e.target.value,
+                                        })
+                                    }
                                     autoComplete="off"
                                     className="input"
                                     id="name"
@@ -35,6 +50,13 @@ export default function ContactPage() {
                                 <div className="flex flex-1 flex-col gap-2">
                                     <label htmlFor="email">Email</label>
                                     <input
+                                        value={data.email}
+                                        onChange={(e) =>
+                                            setData({
+                                                ...data,
+                                                email: e.target.value,
+                                            })
+                                        }
                                         className="input "
                                         autoComplete="off"
                                         id="email"
@@ -44,6 +66,13 @@ export default function ContactPage() {
                                 <div className="flex flex-1 flex-col gap-2">
                                     <label htmlFor="phone">Phone</label>
                                     <input
+                                        value={data.phone}
+                                        onChange={(e) =>
+                                            setData({
+                                                ...data,
+                                                phone: e.target.value,
+                                            })
+                                        }
                                         className="input"
                                         autoComplete="off"
                                         id="phone"
@@ -55,6 +84,13 @@ export default function ContactPage() {
                             <div className="flex flex-1 flex-col gap-2">
                                 <label htmlFor="message">Message</label>
                                 <textarea
+                                    value={data.message}
+                                    onChange={(e) =>
+                                        setData({
+                                            ...data,
+                                            message: e.target.value,
+                                        })
+                                    }
                                     rows={5}
                                     id="message"
                                     autoComplete="off"
@@ -63,12 +99,12 @@ export default function ContactPage() {
                             </div>
 
                             <div className="flex justify-start ">
-                                <Link
-                                    href={route("about")}
+                                <a
+                                    href={`https://wa.me/+919487839640?text=Hi I'm ${data.name}, ${data.message}`}
                                     className="bg-transparent border border-app-primary mt-2 z-10 relative text-app-primary  px-8 py-2  active:scale-95 rounded-full"
                                 >
                                     Sent
-                                </Link>
+                                </a>
                             </div>
                         </div>
                         <div className="flex justify-center items-start mt-10">
@@ -82,7 +118,7 @@ export default function ContactPage() {
                                     +91 9873828388{" "}
                                 </span>
                                 <a
-                                    href="https://wa.me/+919873828388"
+                                    href="https://wa.me/+919487839640"
                                     className=" xl:mt-5 px-4 py-2 text-white text-sm rounded-sm bg-green-600"
                                 >
                                     Connect via Whatsapp

@@ -24,7 +24,40 @@ const PaintingDetailsPage = ({
 
     return (
         <>
-            <Head title="Home" />
+            <Head title="Paintings">
+                <meta name="title" content={painting.title} />
+                <meta name="description" content={painting.short_description} />
+
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:url"
+                    content="https://anindya.oswinjerome.in/"
+                />
+                <meta property="og:title" content={painting.title} />
+                <meta
+                    property="og:description"
+                    content={painting.short_description}
+                />
+                <meta property="og:image" content={painting.painting} />
+
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta
+                    property="twitter:url"
+                    content="https://anindya.oswinjerome.in/"
+                />
+                <meta property="twitter:title" content={painting.title} />
+                <meta
+                    property="twitter:description"
+                    content={painting.short_description}
+                />
+                <meta property="twitter:image" content={painting.painting} />
+
+                <link rel="preconnect" href="https://fonts.bunny.net" />
+                <link
+                    href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"
+                    rel="stylesheet"
+                />
+            </Head>
             <SiteLayout>
                 <div className="mt-24 container mx-auto px-4 py-16 ">
                     <section className="grid lg:grid-cols-[3fr,3fr] gap-16">
@@ -54,6 +87,19 @@ const PaintingDetailsPage = ({
                                             __html: painting.description,
                                         }}
                                     ></div>
+                                </div>
+                                <div className="mt-8 mb-8">
+                                    <a
+                                        href={`https://wa.me/+919487839640?text=I'm interested to buy this painting "${
+                                            painting.title
+                                        }"\n ${route(
+                                            "paintings.details",
+                                            painting.id
+                                        )}`}
+                                        className="bg-transparent border border-app-primary mt-2 z-10 relative text-app-primary  px-8 py-2  active:scale-95 rounded-full"
+                                    >
+                                        Buy Painting
+                                    </a>
                                 </div>
 
                                 {child_paintings.length > 0 && (

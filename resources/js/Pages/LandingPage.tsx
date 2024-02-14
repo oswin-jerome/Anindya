@@ -63,7 +63,50 @@ export default function LandingPage({ paintings }: { paintings: Painting[] }) {
     };
     return (
         <>
-            <Head title="Home" />
+            <Head title="Home">
+                <meta name="title" content="Anindya Mukherjee" />
+                <meta
+                    name="description"
+                    content="My art is a celebration of the unique interplay between colors, textures, and forms, reflecting my personal interpretation of the world. Each painting is a canvas where I pour my heart and soul, creating visual narratives that resonate with both the subtle and profound aspects of existence."
+                />
+
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:url"
+                    content="https://anindya.oswinjerome.in/"
+                />
+                <meta property="og:title" content="Anindya Mukherjee" />
+                <meta
+                    property="og:description"
+                    content="My art is a celebration of the unique interplay between colors, textures, and forms, reflecting my personal interpretation of the world. Each painting is a canvas where I pour my heart and soul, creating visual narratives that resonate with both the subtle and profound aspects of existence."
+                />
+                <meta
+                    property="og:image"
+                    content="https://anindya.oswinjerome.in/images/artist2.jpeg"
+                />
+
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta
+                    property="twitter:url"
+                    content="https://anindya.oswinjerome.in/"
+                />
+                <meta property="twitter:title" content="Anindya Mukherjee" />
+                <meta
+                    property="twitter:description"
+                    content="My art is a celebration of the unique interplay between colors, textures, and forms, reflecting my personal interpretation of the world. Each painting is a canvas where I pour my heart and soul, creating visual narratives that resonate with both the subtle and profound aspects of existence."
+                />
+                <meta
+                    property="twitter:image"
+                    content="https://anindya.oswinjerome.in/images/artist2.jpeg"
+                />
+
+                <link rel="preconnect" href="https://fonts.bunny.net" />
+                <link
+                    href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"
+                    rel="stylesheet"
+                />
+            </Head>
+
             <SiteLayout>
                 <section className=" h-[50vh] md:h-[100vh] relative mt-16 md:mt-auto">
                     <Carousel
