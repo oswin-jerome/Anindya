@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Painting;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class SlugPaint extends Command
 {
@@ -25,6 +27,9 @@ class SlugPaint extends Command
      */
     public function handle()
     {
-        //
+        $paints = Painting::all();
+        foreach ($paints as $key => $value) {
+            $value->slug = Str::slug($value->title);
+        }
     }
 }
