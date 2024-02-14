@@ -30,6 +30,7 @@ class SlugPaint extends Command
         $paints = Painting::all();
         foreach ($paints as $key => $value) {
             $value->slug = Str::slug($value->title);
+            $value->save();
         }
     }
 }
