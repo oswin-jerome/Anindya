@@ -28,7 +28,7 @@ export default function PaintingsPage({
                                 <Link
                                     href={route(
                                         "paintings.details",
-                                        painting.id
+                                        painting.slug
                                     )}
                                     className="cursor-pointer"
                                     key={i}

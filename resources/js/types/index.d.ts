@@ -21,6 +21,7 @@ export type PageProps<
 export interface Painting {
     id: number;
     title: string;
+    slug: string;
     description: string;
     short_description: string;
     post: string;

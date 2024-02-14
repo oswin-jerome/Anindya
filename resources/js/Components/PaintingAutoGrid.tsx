@@ -51,7 +51,7 @@ const PaintingAutoGrid = ({ paintings }: { paintings: Painting[] }) => {
                                     <Link
                                         href={route(
                                             "paintings.details",
-                                            painting.id
+                                            painting.slug
                                         )}
                                         className="cursor-pointer shadow"
                                         key={i}

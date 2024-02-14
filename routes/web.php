@@ -38,7 +38,7 @@ Route::get('/paintings', function () {
 
     ]);
 })->name("paintings.page");
-Route::get('/paintings/{painting}', function (Painting $painting) {
+Route::get('/paintings/{painting:slug}', function (Painting $painting) {
 
     return Inertia::render('PaintingDetailsPage', [
         "painting" => new PaintingResource($painting),

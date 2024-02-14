@@ -94,7 +94,7 @@ const PaintingDetailsPage = ({
                                             painting.title
                                         }"\n ${route(
                                             "paintings.details",
-                                            painting.id
+                                            painting.slug
                                         )}`}
                                         className="bg-transparent border border-app-primary mt-2 z-10 relative text-app-primary  px-8 py-2  active:scale-95 rounded-full"
                                     >
