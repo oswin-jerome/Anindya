@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, router } from "@inertiajs/react";
 import { PageProps, Painting } from "@/types";
+import PrimaryButton from "@/Components/PrimaryButton";
 
 type Prop = PageProps & {
     paintings: Painting[];
@@ -22,7 +23,10 @@ export default function PaintingsList({ auth, paintings }: Prop) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className=" overflow-hidden  sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <Link href={route("paintings.create")}>Create</Link>
+                            <Link href={route("paintings.create")}>
+                                <PrimaryButton>Create</PrimaryButton>
+                            </Link>
+                            <br />
                             <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4 gap-4 mt-5">
                                 {paintings.map((paint, i) => {
                                     return (

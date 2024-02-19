@@ -5,6 +5,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { FormEvent } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import InputError from "@/Components/InputError";
 
 export default function PaintingsCreate({
     auth,
@@ -12,7 +13,7 @@ export default function PaintingsCreate({
 }: PageProps & {
     paintings: Painting[];
 }) {
-    const { data, setData, post, reset } = useForm<{
+    const { data, setData, post, reset, errors } = useForm<{
         title: string;
         description: string;
         short_description: string;
@@ -85,6 +86,10 @@ export default function PaintingsCreate({
                                             );
                                         })}
                                     </select>
+                                    <InputError
+                                        message={errors.painting_id}
+                                        className="mt-2"
+                                    />
                                 </div>
 
                                 <div className="input-box">
@@ -99,6 +104,10 @@ export default function PaintingsCreate({
                                         required
                                         type="file"
                                     />
+                                    <InputError
+                                        message={errors.painting}
+                                        className="mt-2"
+                                    />
                                 </div>
                                 <div className="input-box">
                                     <label htmlFor="">Title</label>
@@ -108,6 +117,10 @@ export default function PaintingsCreate({
                                             setData("title", e.target.value)
                                         }
                                         type="text"
+                                    />
+                                    <InputError
+                                        message={errors.title}
+                                        className="mt-2"
                                     />
                                 </div>
                                 <div className="input-box">
@@ -127,6 +140,10 @@ export default function PaintingsCreate({
                                         <option value="Paint">Paint</option>
                                         <option value="Pen">Pen</option>
                                     </select>
+                                    <InputError
+                                        message={errors.medium}
+                                        className="mt-2"
+                                    />
                                 </div>
                                 <div className="input-box">
                                     <label htmlFor="">Size</label>
@@ -136,6 +153,10 @@ export default function PaintingsCreate({
                                             setData("size", e.target.value)
                                         }
                                         type="text"
+                                    />
+                                    <InputError
+                                        message={errors.size}
+                                        className="mt-2"
                                     />
                                 </div>
                                 <div className="input-box">
@@ -149,6 +170,10 @@ export default function PaintingsCreate({
                                             )
                                         }
                                         type="text"
+                                    />
+                                    <InputError
+                                        message={errors.short_description}
+                                        className="mt-2"
                                     />
                                 </div>
                                 <div className="input-box">
@@ -170,6 +195,10 @@ export default function PaintingsCreate({
                                             setData("description", e)
                                         }
                                     />
+                                    <InputError
+                                        message={errors.description}
+                                        className="mt-2"
+                                    />
                                 </div>
                                 <div className="input-box">
                                     <label htmlFor="">Post</label>
@@ -185,6 +214,10 @@ export default function PaintingsCreate({
                                         value={data.post}
                                         onChange={(e) => setData("post", e)}
                                     />
+                                    <InputError
+                                        message={errors.post}
+                                        className="mt-2"
+                                    />
                                 </div>
                                 <div className="input-box">
                                     <label htmlFor="">Price</label>
@@ -197,6 +230,10 @@ export default function PaintingsCreate({
                                             )
                                         }
                                         type="number"
+                                    />
+                                    <InputError
+                                        message={errors.price}
+                                        className="mt-2"
                                     />
                                 </div>
 

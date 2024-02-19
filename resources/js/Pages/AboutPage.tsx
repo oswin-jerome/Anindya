@@ -165,17 +165,6 @@ export default function AboutPage() {
                                     mortality.
                                     <br />
                                     <br />
-                                    Through my paintings, I aim to provoke
-                                    introspection and awaken an awareness of our
-                                    interconnectedness with the natural world.
-                                    Each brushstroke is infused with the urgency
-                                    of this realization, urging viewers to
-                                    contemplate their place in the grand
-                                    tapestry of existence. For me, art is not
-                                    just a means of expression but a tool for
-                                    fostering a deeper connection to the world
-                                    and a greater appreciation for the beauty
-                                    and fragility of life.
                                 </p>
                             </div>
                         </div>
