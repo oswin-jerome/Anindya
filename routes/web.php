@@ -3,8 +3,11 @@
 use App\Http\Controllers\PaintingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Resources\PaintingResource;
+use App\Mail\ContactForm;
 use App\Models\Painting;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -49,6 +52,13 @@ Route::get('/paintings/{painting:slug}', function (Painting $painting) {
 Route::get('/contact', function () {
     return Inertia::render('ContactPage');
 })->name("contact");
+
+Route::post('/contact', function (Request $request) {
+
+    Mail::to("anindyaartist17@gmail.com")->send(new ContactForm($request->get("name"), $request->get("email"), $request->get("phone"), $request->get("message"),));
+
+    return back();
+})->name("contact.post");
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

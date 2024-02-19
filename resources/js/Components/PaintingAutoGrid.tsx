@@ -36,10 +36,10 @@ const PaintingAutoGrid = ({ paintings }: { paintings: Painting[] }) => {
         <section className="container mx-auto px-4 py-16">
             <h3 className="text-center  mb-4 heading-1">My Paintings</h3>
             <p className="mx-auto text-center max-w-[500px] description">
-                Lorem ipsum dolor sit amet consectetur. Eget blandit gravida
-                purus pharetra. Dis praesent volutpat interdum egestas facilisis
-                est cras volutpat nisi. In eu lectus luctus eu. Metus sit risus
-                tincidunt malesuada ornare.
+                Step into the world of my artistry and explore the intricate
+                tapestry of emotions and reflections woven into each piece.
+                Connect with me to embark on a journey of introspection and
+                discovery through the lens of art.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-12 lg:mt-20 max-w-[80ch] mx-auto">

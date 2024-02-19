@@ -147,24 +147,29 @@ export default function LandingPage({ paintings }: { paintings: Painting[] }) {
                     <div className="">
                         <div className="flex-1 text-slate-600 max-w-[80ch] leading-loose text-justify  mx-auto font-content">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur. Arcu
-                                cursus congue viverra nunc non aliquam non magna
-                                in. Justo consequat sit malesuada ut condimentum
-                                sollicitudin elementum facilisi. Quis vitae
-                                tortor faucibus vestibulum adipiscing arcu
-                                porttitor non diam. Iaculis eget lectus sed ut
-                                nulla. Vitae velit mauris diam feugiat.
+                                Welcome to my world of artistry! I'm Anindya
+                                Mukherjee, a passionate artist hailing from the
+                                picturesque landscapes of India. My art revolves
+                                around the profound cycles of life and death,
+                                delving into the intricate relationship between
+                                humanity and nature.
                                 <br />
                                 <br />
-                                Orci quam sapien amet vitae sit sagittis turpis.
-                                Ut et arcu nisl elementum pretium purus.
-                                Volutpat a ornare tincidunt tincidunt. Leo
-                                tincidunt quis arcu amet lectus.Iaculis eget
-                                lectus sed ut nulla. Vitae velit mauris diam
-                                feugiat. Orci quam sapien amet vitae sit
-                                sagittis turpis. Ut et arcu nisl elementum
-                                pretium purus. Volutpat a ornare tincidunt
-                                tincidunt. Leo tincidunt quis arcu amet lectus
+                                My journey into the realm of art began amidst
+                                the serene surroundings of Kurseong hill
+                                station, where I spent my childhood . Surrounded
+                                by nature's boundless beauty, I found my muse
+                                and embarked on a creative exploration that
+                                continues to shape my existence. Despite facing
+                                economic hurdles and initial rejections from art
+                                colleges, my determination fueled my pursuit of
+                                artistic expression. Battling periods of
+                                depression and frustration, I found solace and
+                                inspiration in the ever-evolving canvas of
+                                nature. Tragically, the loss of my mother served
+                                as a poignant reminder of life's transient
+                                nature, igniting a profound introspection into
+                                the essence of existence.
                             </p>
                             <div className="flex justify-center">
                                 <Link

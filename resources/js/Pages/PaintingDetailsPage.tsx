@@ -90,7 +90,7 @@ const PaintingDetailsPage = ({
                                 </div>
                                 <div className="mt-8 mb-8">
                                     <a
-                                        href={`https://wa.me/+919487839640?text=I'm interested to buy this painting "${
+                                        href={`https://wa.me/+919800501350?text=I'm interested to buy this painting "${
                                             painting.title
                                         }"\n ${route(
                                             "paintings.details",
@@ -212,7 +212,7 @@ function PaintItem({ paint }: { paint: Painting }) {
                 shouldCloseOnOverlayClick={true}
                 overlayClassName="Overlay"
             >
-                <div className="max-h-[90vh] max-w-[90vw] lg:max-w-[70vw] overflow-scroll">
+                <div className="max-h-[90vh] max-w-[90vw] lg:max-w-[70vw] overflow-scroll pb-16">
                     <div className="flex justify-end pb-2">
                         <button onClick={() => setIsOpen(false)}>
                             <svg
@@ -254,7 +254,10 @@ function PaintItem({ paint }: { paint: Painting }) {
                             </p>
                             <div className="mt-10">
                                 <Link
-                                    href={route("paintings.details", paint.id)}
+                                    href={route(
+                                        "paintings.details",
+                                        paint.slug
+                                    )}
                                     className="bg-transparent border border-app-primary mt-2 z-10 relative text-app-primary  px-8 py-2  active:scale-95 rounded-full"
                                 >
                                     View

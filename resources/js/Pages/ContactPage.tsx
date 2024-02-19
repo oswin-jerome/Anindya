@@ -1,17 +1,39 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, useForm } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import Guest from "@/Layouts/GuestLayout";
 import SiteLayout from "@/Layouts/SiteLayout";
 import { IoLogoWhatsapp, IoMailOutline } from "react-icons/io5";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function ContactPage() {
-    const [data, setData] = useState({
+    const [fromData, setFromData] = useState({
         name: "",
         email: "",
         phone: "",
         message: "",
     });
+
+    const { data, setData, post, reset, processing } = useForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+    const [status, setStatus] = useState(false);
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+
+        post(route("contact.post"), {
+            preserveScroll: true,
+            onSuccess: () => {
+                reset();
+                setStatus(true);
+                setTimeout(() => {
+                    setStatus(false);
+                }, 3000);
+            },
+        });
+    };
 
     return (
         <>
@@ -27,98 +49,111 @@ export default function ContactPage() {
                         gravida purus pharetra. Dis praesent volutpat inter
                     </p>
 
-                    <section className="mt-10 grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-6 md:gap-8 ">
-                        <div className="grid gap-4 h-[100%]">
-                            <div className="flex flex-1 flex-col gap-2">
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    value={data.name}
-                                    onChange={(e) =>
-                                        setData({
-                                            ...data,
-                                            name: e.target.value,
-                                        })
-                                    }
-                                    autoComplete="off"
-                                    className="input"
-                                    id="name"
-                                    type="text"
-                                />
-                            </div>
-
-                            <div className="flex flex-col xl:flex-row gap-4">
+                    <section className="mt-12 grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-6 md:gap-8 ">
+                        <form onSubmit={handleSubmit} className="h-[100%]">
+                            {status && (
+                                <p className="bg-green-200 p-4 mb-6 rounded text-green-900">
+                                    Message Sent
+                                </p>
+                            )}
+                            <div className="grid gap-4 h-[100%]">
                                 <div className="flex flex-1 flex-col gap-2">
-                                    <label htmlFor="email">Email</label>
+                                    <label htmlFor="name">Name</label>
                                     <input
-                                        value={data.email}
+                                        value={data.name}
                                         onChange={(e) =>
-                                            setData({
-                                                ...data,
-                                                email: e.target.value,
-                                            })
+                                            // setFromData({
+                                            //     ...fromData,
+                                            //     name: e.target.value,
+                                            // })
+                                            setData("name", e.target.value)
                                         }
-                                        className="input "
                                         autoComplete="off"
-                                        id="email"
-                                        type="text"
-                                    />
-                                </div>
-                                <div className="flex flex-1 flex-col gap-2">
-                                    <label htmlFor="phone">Phone</label>
-                                    <input
-                                        value={data.phone}
-                                        onChange={(e) =>
-                                            setData({
-                                                ...data,
-                                                phone: e.target.value,
-                                            })
-                                        }
                                         className="input"
-                                        autoComplete="off"
-                                        id="phone"
+                                        id="name"
                                         type="text"
+                                        required
                                     />
                                 </div>
-                            </div>
 
-                            <div className="flex flex-1 flex-col gap-2">
-                                <label htmlFor="message">Message</label>
-                                <textarea
-                                    value={data.message}
-                                    onChange={(e) =>
-                                        setData({
-                                            ...data,
-                                            message: e.target.value,
-                                        })
-                                    }
-                                    rows={5}
-                                    id="message"
-                                    autoComplete="off"
-                                    className="input"
-                                />
-                            </div>
+                                <div className="flex flex-col xl:flex-row gap-4">
+                                    <div className="flex flex-1 flex-col gap-2">
+                                        <label htmlFor="email">Email</label>
+                                        <input
+                                            value={data.email}
+                                            onChange={(e) =>
+                                                // setFromData({
+                                                //     ...fromData,
+                                                //     email: e.target.value,
+                                                // })
+                                                setData("email", e.target.value)
+                                            }
+                                            className="input "
+                                            autoComplete="off"
+                                            id="email"
+                                            type="text"
+                                        />
+                                    </div>
+                                    <div className="flex flex-1 flex-col gap-2">
+                                        <label htmlFor="phone">Phone</label>
+                                        <input
+                                            value={data.phone}
+                                            onChange={(e) =>
+                                                setData("phone", e.target.value)
+                                            }
+                                            required
+                                            className="input"
+                                            autoComplete="off"
+                                            id="phone"
+                                            type="text"
+                                        />
+                                    </div>
+                                </div>
 
-                            <div className="flex justify-start ">
-                                <a
-                                    href={`https://wa.me/+919487839640?text=Hi I'm ${data.name}, ${data.message}`}
-                                    className="bg-transparent border border-app-primary mt-2 z-10 relative text-app-primary  px-8 py-2  active:scale-95 rounded-full"
-                                >
-                                    Sent
-                                </a>
+                                <div className="flex flex-1 flex-col gap-2">
+                                    <label htmlFor="message">Message</label>
+                                    <textarea
+                                        value={data.message}
+                                        onChange={(e) =>
+                                            // setFromData({
+                                            //     ...fromData,
+                                            //     message: e.target.value,
+                                            // })
+                                            setData("message", e.target.value)
+                                        }
+                                        rows={5}
+                                        id="message"
+                                        autoComplete="off"
+                                        className="input"
+                                    />
+                                </div>
+
+                                <div className="flex justify-start items-center ">
+                                    <button
+                                        disabled={processing}
+                                        className="bg-transparent border border-app-primary mt-2 z-10 relative text-app-primary  px-8 py-2  active:scale-95 rounded-full disabled:opacity-50 inline-block"
+                                    >
+                                        {processing ? "Sending..." : "Sent"}
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <div className="flex justify-center items-start mt-10">
                             <div className="flex flex-col items-center gap-4">
                                 <span className="flex gap-3  text-md items-center">
                                     <IoMailOutline />
-                                    johndoe@gmail.com{" "}
+                                    <a href="mailto:anindyaartist17@gmail.com">
+                                        anindyaartist17@gmail.com
+                                    </a>
                                 </span>
                                 <span className="flex gap-3 text-md items-center">
                                     <IoLogoWhatsapp />
-                                    +91 9873828388{" "}
+                                    <a href="tel:+919800501350">
+                                        +91 98005 01350
+                                    </a>
                                 </span>
                                 <a
-                                    href="https://wa.me/+919487839640"
+                                    href="https://wa.me/+919800501350"
                                     className=" xl:mt-5 px-4 py-2 text-white text-sm rounded-sm bg-green-600"
                                 >
                                     Connect via Whatsapp
@@ -134,40 +169,39 @@ export default function ContactPage() {
                                 <div className="flex flex-1 flex-col gap-2">
                                     <p className="mx-auto max-w-[500px] description">
                                         <p className="text-app-primary font-semibold mb-2">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur?
+                                            How do I purchase an original
+                                            painting?
                                         </p>
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Eget blandit gravida purus pharetra. Dis
-                                        praesent volutpat inter Eget blandit
-                                        gravida purus pharetra. Dis praesent
-                                        volutpat inter
+                                        To inquire about purchasing an original
+                                        painting, sign up for our email list and
+                                        contact me via WhatsApp. This way,
+                                        you'll stay updated on available works
+                                        and can reach out directly to discuss
+                                        purchasing options.
                                     </p>
                                 </div>
                                 <div className="flex flex-1 flex-col gap-2">
                                     <p className="mx-auto max-w-[500px] description">
                                         <p className="text-app-primary font-semibold mb-2">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur?
+                                            Can I commission a painting?
                                         </p>
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Eget blandit gravida purus pharetra. Dis
-                                        praesent volutpat inter Eget blandit
-                                        gravida purus pharetra. Dis praesent
-                                        volutpat inter
+                                        If your request aligns with the themes
+                                        and style of my artwork, I ll be happy
+                                        to work on commission paintings . Feel
+                                        free to reach out to discuss further.
                                     </p>
                                 </div>
                                 <div className="flex flex-1 flex-col gap-2">
                                     <p className="mx-auto max-w-[500px] description">
                                         <p className="text-app-primary font-semibold mb-2">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur?
+                                            Do you ship worldwide?
                                         </p>
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Eget blandit gravida purus pharetra. Dis
-                                        praesent volutpat inter Eget blandit
-                                        gravida purus pharetra. Dis praesent
-                                        volutpat inter
+                                        Absolutely! We ship our artwork to
+                                        locations across the globe. However,
+                                        please be aware that additional import
+                                        taxes may apply depending on your area's
+                                        customs guidelines and delivery
+                                        regulations.
                                     </p>
                                 </div>
                             </div>
@@ -176,31 +210,38 @@ export default function ContactPage() {
                                 <div className="flex flex-1 flex-col gap-2">
                                     <p className="mx-auto max-w-[500px] description">
                                         <p className="text-app-primary font-semibold mb-2">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur?
+                                            How long does it take to receive a
+                                            painting?
                                         </p>
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Eget blandit gravida purus pharetra. Dis
-                                        praesent volutpat inter Eget blandit
-                                        gravida purus pharetra. Dis praesent
-                                        volutpat inter
+                                        The time-frame for receiving an original
+                                        painting may vary. Generally, there is
+                                        an additional processing and delivery
+                                        time for original artworks. For
+                                        commissioned pieces , the duration will
+                                        depend on factors such as size and
+                                        complexity. Rest assured, we'll work
+                                        diligently to provide you with a
+                                        realistic estimate and keep you informed
+                                        throughout the process.
                                     </p>
                                 </div>
                                 <div className="flex flex-1 flex-col gap-2">
                                     <p className="mx-auto max-w-[500px] description">
                                         <p className="text-app-primary font-semibold mb-2">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur?
+                                            Do you accept visitors at your
+                                            studio?
                                         </p>
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Eget blandit gravida purus pharetra. Dis
-                                        praesent volutpat inter Eget blandit
-                                        gravida purus pharetra. Dis praesent
-                                        volutpat inter
+                                        Absolutely! I welcome visitors to my
+                                        studio with open arms. Whether you're an
+                                        aspiring artist eager to learn or simply
+                                        interested in exploring my artwork, feel
+                                        free to get in touch with me to schedule
+                                        a visit. I look forward to sharing my
+                                        creative space with you!
                                     </p>
                                 </div>
 
-                                <div className="flex flex-1 flex-col gap-2">
+                                {/* <div className="flex flex-1 flex-col gap-2">
                                     <p className="mx-auto max-w-[500px] description">
                                         <p className="text-app-primary font-semibold mb-2">
                                             Lorem ipsum dolor sit amet
@@ -212,7 +253,7 @@ export default function ContactPage() {
                                         gravida purus pharetra. Dis praesent
                                         volutpat inter
                                     </p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </section>
