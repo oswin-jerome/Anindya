@@ -47,7 +47,7 @@ Route::get("/paintings/{painting:slug}", function (Painting $painting) {
 
 Route::post('/contact', function (Request $request) {
 
-    Mail::to("anindyaartist17@gmail.com")->send(new ContactForm($request->get("name"), $request->get("email"), $request->get("phone"), $request->get("message"),));
+    Mail::to("oswinjeromej@gmail.com")->send(new ContactForm($request->get("name"), $request->get("email"), $request->get("phone"), $request->get("message")));
 
-    return back();
+    return response(200);
 });
