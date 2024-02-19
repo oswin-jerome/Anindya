@@ -73,7 +73,7 @@ export default function LandingPage({ paintings }: { paintings: Painting[] }) {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:url"
-                    content="https://anindya.oswinjerome.in/"
+                    content="https://www.anindyamukherjee.in/"
                 />
                 <meta property="og:title" content="Anindya Mukherjee" />
                 <meta
@@ -82,13 +82,13 @@ export default function LandingPage({ paintings }: { paintings: Painting[] }) {
                 />
                 <meta
                     property="og:image"
-                    content="https://anindya.oswinjerome.in/images/artist2.jpeg"
+                    content="https://www.anindyamukherjee.in/images/artist2.jpeg"
                 />
 
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta
                     property="twitter:url"
-                    content="https://anindya.oswinjerome.in/"
+                    content="https://www.anindyamukherjee.in/"
                 />
                 <meta property="twitter:title" content="Anindya Mukherjee" />
                 <meta
@@ -97,7 +97,7 @@ export default function LandingPage({ paintings }: { paintings: Painting[] }) {
                 />
                 <meta
                     property="twitter:image"
-                    content="https://anindya.oswinjerome.in/images/artist2.jpeg"
+                    content="https://www.anindyamukherjee.in/images/artist2.jpeg"
                 />
 
                 <link rel="preconnect" href="https://fonts.bunny.net" />

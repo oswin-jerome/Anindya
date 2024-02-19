@@ -31,7 +31,7 @@ const PaintingDetailsPage = ({
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:url"
-                    content="https://anindya.oswinjerome.in/"
+                    content="https://www.anindyamukherjee.in/"
                 />
                 <meta property="og:title" content={painting.title} />
                 <meta
@@ -43,7 +43,7 @@ const PaintingDetailsPage = ({
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta
                     property="twitter:url"
-                    content="https://anindya.oswinjerome.in/"
+                    content="https://www.anindyamukherjee.in/"
                 />
                 <meta property="twitter:title" content={painting.title} />
                 <meta
